@@ -2,13 +2,13 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    dirs: ["."],
-  },
-  experimental: {
-    serverActions: true,
-    typedRoutes: true,
-  },
+	eslint: {
+		dirs: ["."],
+	},
+	experimental: {
+		serverActions: true,
+		typedRoutes: true,
+	},
 };
 
 module.exports = nextConfig;
