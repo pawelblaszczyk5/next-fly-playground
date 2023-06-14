@@ -17,6 +17,7 @@
   "packageManager": "pnpm@8.6.2",
   "devDependencies": {
     "@flydotio/dockerfile": "^0.2.15",
+    "@total-typescript/ts-reset": "^0.4.2",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
