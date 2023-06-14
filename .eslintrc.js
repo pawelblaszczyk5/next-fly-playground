@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/prefer-module -- ESLint config file */
+
 const builtinRules = {
   "arrow-body-style": ["error", "as-needed"],
   curly: ["error", "multi", "consistent"],
@@ -275,17 +277,34 @@ const reactRules = {
 };
 
 module.exports = {
-  root: true,
-  parser: "@typescript-eslint/parser",
-  ignorePatterns: [
-    ".eslintrc.js",
-    "prettier.config.js",
-    "node_modules/",
-    "tailwind.config.js",
-    "next.config.js",
-    "postcss.config.js",
-    "next-env.d.ts",
+  extends: [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/strict",
+    "plugin:eslint-comments/recommended",
+    "plugin:regexp/recommended",
+    "plugin:promise/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/strict",
+    "plugin:perfectionist/recommended-natural",
+    "prettier",
   ],
+  ignorePatterns: ["node_modules/", "next-env.d.ts"],
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx", "*.js", "*.cjs"],
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
+  ],
+  parser: "@typescript-eslint/parser",
   plugins: [
     "@typescript-eslint",
     "canonical",
@@ -302,22 +321,7 @@ module.exports = {
     "tailwindcss",
     "perfectionist",
   ],
-  extends: [
-    "eslint:recommended",
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:@typescript-eslint/strict",
-    "plugin:eslint-comments/recommended",
-    "plugin:regexp/recommended",
-    "plugin:promise/recommended",
-    "plugin:unicorn/recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/strict",
-    "prettier",
-  ],
+  root: true,
   rules: {
     ...builtinRules,
     ...preferArrowFunctionsRules,
@@ -349,13 +353,4 @@ module.exports = {
       tags: ["tw"],
     },
   },
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx", "*.js", "*.cjs"],
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: __dirname,
-      },
-    },
-  ],
 };

@@ -1,8 +1,13 @@
+/* eslint-disable unicorn/prefer-module -- next config*/
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    dirs: ["."],
+  },
   experimental: {
-    typedRoutes: true,
     serverActions: true,
+    typedRoutes: true,
   },
 };
 
