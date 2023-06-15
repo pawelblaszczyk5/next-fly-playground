@@ -1,7 +1,14 @@
-// import SqliteDatabase from "better-sqlite3";
-// import { BetterSQLite3Database, drizzle } from "drizzle-orm/better-sqlite3";
+import SqliteDatabase from "better-sqlite3";
+import { drizzle } from "drizzle-orm/better-sqlite3";
+import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-// const sqlite = new SqliteDatabase(process.env);
-// const db = drizzle(sqlite);
+export const entries = sqliteTable("entries", {
+	id: text("id").primaryKey(),
+	region: text("region").notNull(),
+	text: text("text").notNull(),
+	username: text("username").notNull(),
+});
 
-export const db = null;
+const sqlite = new SqliteDatabase(process.env["DATABASE_PATH"]!);
+
+export const db = drizzle(sqlite);

@@ -8,9 +8,11 @@
 		"start": "next start",
 		"lint": "next lint",
 		"update-dependencies": "taze major -I -w",
-		"migrate-db": "echo \"test\""
+		"migrate-db": "esrun other/migrate.ts"
 	},
 	"dependencies": {
+		"@digitak/esrun": "^3.2.24",
+		"@paralleldrive/cuid2": "^2.2.1",
 		"better-sqlite3": "^8.4.0",
 		"drizzle-orm": "^0.26.5",
 		"next": "canary",

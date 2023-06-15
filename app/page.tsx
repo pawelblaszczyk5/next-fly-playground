@@ -1,12 +1,22 @@
+import { db, entries } from "~/lib/db";
+
 export const dynamic = "force-dynamic";
 
 const HomePage = () => {
-	console.log("DB_PATH", process.env["DATABASE_PATH"]);
-	console.log("REGION", process.env["FLY_REGION"]);
+	const result = db.select().from(entries).all();
 
 	return (
 		<main>
 			<h1>Hello world from fly.io</h1>
+			<h2>Current region: {process.env["FLY_REGION"] ?? "Local"}</h2>
+			{result.map(result => (
+				<li key={result.id}>
+					<span>ID: {result.id}</span>
+					<span>Username: {result.username}</span>
+					<span>Text: {result.text}</span>
+					<span>Region: {result.region}</span>
+				</li>
+			))}
 		</main>
 	);
 };
