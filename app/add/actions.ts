@@ -9,13 +9,15 @@ export const addEntry = async (data: FormData) => {
 	const text = data.get("text") as string;
 	const username = data.get("username") as string;
 
-	db.insert(entries).values({
-		id: createId(),
-		region: process.env["FLY_REGION"] ?? "loc",
-		text,
-		username,
-  }).run();
-  
+	db()
+		.insert(entries)
+		.values({
+			id: createId(),
+			region: process.env["FLY_REGION"] ?? "loc",
+			text,
+			username,
+		})
+		.run();
 
 	return redirect("/");
 };

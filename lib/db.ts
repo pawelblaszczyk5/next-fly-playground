@@ -1,3 +1,5 @@
+import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
+
 import SqliteDatabase from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
@@ -9,6 +11,13 @@ export const entries = sqliteTable("entries", {
 	username: text("username").notNull(),
 });
 
-const sqlite = new SqliteDatabase(process.env["DATABASE_PATH"]!);
+let localDb: BetterSQLite3Database | undefined;
 
-export const db = drizzle(sqlite);
+export const db = () => {
+	if (localDb) return localDb;
+	const sqlite = new SqliteDatabase(process.env["DATABASE_PATH"]!);
+
+	localDb = drizzle(sqlite);
+
+	return localDb;
+};

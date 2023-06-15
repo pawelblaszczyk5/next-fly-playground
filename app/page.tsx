@@ -3,7 +3,7 @@ import { db, entries } from "~/lib/db";
 export const dynamic = "force-dynamic";
 
 const HomePage = () => {
-	const result = db.select().from(entries).all();
+	const result = db().select().from(entries).all();
 
 	return (
 		<main>
