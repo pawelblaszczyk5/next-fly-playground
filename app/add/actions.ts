@@ -19,5 +19,5 @@ export const addEntry = async (data: FormData) => {
 		})
 		.run();
 
-	return redirect("/");
+	redirect("/");
 };
