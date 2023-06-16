@@ -1,17 +1,19 @@
 {
   "version": "5",
-  "dialect": "sqlite",
-  "id": "b64efed1-56cf-40e5-83a8-2263e30cde6f",
+  "dialect": "pg",
+  "id": "c8d43f16-e8dc-4bf1-8e6c-a49784a703c0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "entries": {
       "name": "entries",
+      "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "region": {
           "name": "region",
@@ -38,6 +40,7 @@
     }
   },
   "enums": {},
+  "schemas": {},
   "_meta": {
     "schemas": {},
     "tables": {},

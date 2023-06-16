@@ -5,9 +5,6 @@
 /.pnp
 .pnp.js
 
-# local files e.g. sqlite file
-/local/*
-
 # testing
 /coverage
 

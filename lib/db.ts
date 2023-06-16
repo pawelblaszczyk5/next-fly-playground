@@ -1,23 +1,23 @@
-import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
+import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
-import SqliteDatabase from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 
-export const entries = sqliteTable("entries", {
-	id: text("id").primaryKey(),
+export const entries = pgTable("entries", {
+	id: uuid("id").defaultRandom().primaryKey(),
 	region: text("region").notNull(),
 	text: text("text").notNull(),
 	username: text("username").notNull(),
 });
 
-let localDb: BetterSQLite3Database | undefined;
+let localDb: PostgresJsDatabase | undefined;
 
 export const db = () => {
 	if (localDb) return localDb;
-	const sqlite = new SqliteDatabase(process.env["DATABASE_PATH"]!);
+	const queryClient = postgres(process.env["DATABASE_URL"]!);
 
-	localDb = drizzle(sqlite);
+	localDb = drizzle(queryClient);
 
 	return localDb;
 };

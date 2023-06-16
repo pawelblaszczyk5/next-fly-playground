@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "ES2018",
+		"target": "ESNext",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
@@ -34,6 +34,6 @@
 		"noUnusedParameters": true,
 		"checkJs": true
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".eslintrc.js", "**/*.js"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".eslintrc.js", "**/*.js", "other/migrate.ts", "other/setup-swap.ts"],
 	"exclude": ["node_modules"]
 }

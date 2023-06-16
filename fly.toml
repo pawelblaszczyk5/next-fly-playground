@@ -3,36 +3,25 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "next-playground"
+app = "next-playground-psql"
 primary_region = "waw"
 
-[mounts]
-  source = "data"
-  destination = "/data"
-
-[[services]]
+[http_service]
   internal_port = 3000
-  processes = [ "app" ]
-  protocol = "tcp"
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
 
-  [[services.ports]]
-    handlers = [ "http" ]
-    port = 80
-    force_https = true
-
-  [[services.ports]]
-    handlers = [ "tls", "http" ]
-    port = 443
-
-  [[services.http_checks]]
+[checks]
+  [checks.base_check]
     grace_period = "5s"
     interval = "15s"
     method = "get"
     path = "/api/health"
+    port = 3000
     timeout = "4s"
+    type = "http"
 
-  [[services.tcp_checks]]
-    grace_period = "5s"
-    interval = "15s"
-    restart_limit = 6
-    timeout = "2s"
+[deploy]
+  release_command = "pnpm run-migrations"
