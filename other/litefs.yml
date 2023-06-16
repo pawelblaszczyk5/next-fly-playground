@@ -30,4 +30,6 @@ exec:
   - cmd: pnpm migrate-db
     if-candidate: true
 
+  - cmd: pnpm setup-swap
+
   - cmd: pnpm start

@@ -8,13 +8,15 @@
 		"start": "next start",
 		"lint": "next lint",
 		"update-dependencies": "taze major -I -w",
-		"migrate-db": "esrun other/migrate.ts"
+		"migrate-db": "esrun other/migrate.ts",
+		"setup-swap": "esrun other/setup-swap.ts"
 	},
 	"dependencies": {
 		"@digitak/esrun": "^3.2.24",
 		"@paralleldrive/cuid2": "^2.2.1",
 		"better-sqlite3": "^8.4.0",
 		"drizzle-orm": "^0.26.5",
+		"execa": "^7.1.1",
 		"next": "canary",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
