@@ -34,6 +34,6 @@
 		"noUnusedParameters": true,
 		"checkJs": true
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".eslintrc.js", "**/*.js", "other/migrate.ts", "other/setup-swap.ts"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".eslintrc.js", "**/*.js"],
 	"exclude": ["node_modules"]
 }
