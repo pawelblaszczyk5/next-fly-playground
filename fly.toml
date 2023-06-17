@@ -1,27 +1,40 @@
-# fly.toml app configuration file generated for next-playground on 2023-06-14T23:48:52+02:00
+# fly.toml app configuration file generated for next-playground-sqlite on 2023-06-17T22:10:32+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "next-playground-psql"
+app = "next-playground-sqlite"
 primary_region = "waw"
 
-[http_service]
-  internal_port = 3000
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 0
+[[mounts]]
+  source = "data"
+  destination = "/data"
 
-[checks]
-  [checks.base_check]
+[[services]]
+  protocol = "tcp"
+  internal_port = 3000
+  auto_stop_machines = false
+  auto_start_machines = true
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.tcp_checks]]
+    interval = "5s"
+    timeout = "3s"
     grace_period = "5s"
-    interval = "15s"
+    restart_limit = 5
+
+  [[services.http_checks]]
+    interval = "5s"
+    timeout = "3s"
+    grace_period = "5s"
+    restart_limit = 0
     method = "get"
     path = "/api/health"
-    port = 3000
-    timeout = "4s"
-    type = "http"
-
-[deploy]
-  release_command = "pnpm run-migrations"
