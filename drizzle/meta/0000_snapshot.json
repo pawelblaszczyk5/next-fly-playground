@@ -1,37 +1,39 @@
 {
   "version": "5",
-  "dialect": "pg",
-  "id": "c8d43f16-e8dc-4bf1-8e6c-a49784a703c0",
+  "dialect": "sqlite",
+  "id": "94b58f1a-ab8b-4943-82da-c0a222ef6b72",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "entries": {
       "name": "entries",
-      "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "default": "gen_random_uuid()"
+          "autoincrement": false
         },
         "region": {
           "name": "region",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "text": {
           "name": "text",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "username": {
           "name": "username",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -40,7 +42,6 @@
     }
   },
   "enums": {},
-  "schemas": {},
   "_meta": {
     "schemas": {},
     "tables": {},

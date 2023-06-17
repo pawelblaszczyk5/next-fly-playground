@@ -1,13 +1,13 @@
 {
   "version": "5",
-  "dialect": "pg",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1686925781674,
-      "tag": "0000_unusual_shaman",
-      "breakpoints": false
+      "when": 1687032133330,
+      "tag": "0000_famous_the_fallen",
+      "breakpoints": true
     }
   ]
 }

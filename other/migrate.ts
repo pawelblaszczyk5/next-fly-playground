@@ -1,9 +1,10 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import { migrate } from "drizzle-orm/postgres-js/migrator";
-import postgres from "postgres";
+import SqliteDatabase from "better-sqlite3";
+import { drizzle } from "drizzle-orm/better-sqlite3";
+import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 
 // TODO: It's not working locally
-const migrationClient = postgres(process.env["DATABASE_URL"]!, { max: 1 });
+const sqlite = new SqliteDatabase(process.env["DATABASE_PATH"]!);
 
-await migrate(drizzle(migrationClient), { migrationsFolder: "./drizzle" });
-await migrationClient.end();
+const db = drizzle(sqlite);
+
+migrate(db, { migrationsFolder: "./drizzle" });
