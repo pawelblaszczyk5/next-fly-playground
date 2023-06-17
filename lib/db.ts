@@ -14,10 +14,7 @@ export const entries = sqliteTable("entries", {
 let localDb: BetterSQLite3Database | undefined;
 
 export const db = () => {
-	if (localDb) return localDb;
-	const sqlite = new SqliteDatabase(process.env["DATABASE_PATH"]!);
-
-	localDb = drizzle(sqlite);
+	localDb ??= drizzle(new SqliteDatabase(process.env["DATABASE_PATH"]!));
 
 	return localDb;
 };
