@@ -28,7 +28,7 @@ lease:
     key: "litefs/${FLY_APP_NAME}"
 
 exec:
-  - cmd: pnpm migrate-db
+  - cmd: pnpm db:migrate
     if-candidate: true
 
   - cmd: pnpm setup-swap
